@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 // Auth::routes();
 
-Route::get('/', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm']);
+Route::get('/', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login.index');
 Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login'])->name('login');
 
 Route::post('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
