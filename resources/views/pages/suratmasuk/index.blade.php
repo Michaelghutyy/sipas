@@ -11,7 +11,7 @@
         <li class="breadcrumb-item active">Surat Masuk</li>
     </ol>
 
-    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm mb-4">
+    <a href="{{ route('surat-masuk.create') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm mb-4">
         <i class="fas fa-plus fa-sm text-white-50"></i>
         Tambah
     </a>

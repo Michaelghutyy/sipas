@@ -23,7 +23,7 @@ class SuratMasukController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.suratmasuk.create');
     }
 
     /**
