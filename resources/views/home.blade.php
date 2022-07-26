@@ -1,4 +1,5 @@
 @extends('layouts.master')
+@section('dashboard', 'active')
 
 @section('content')
 <div class="container-fluid px-4">
