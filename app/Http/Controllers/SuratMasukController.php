@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SuratMasuk;
 use Illuminate\Http\Request;
+use App\Http\Requests\SuratMasukRequest;
 
 class SuratMasukController extends Controller
 {
@@ -33,9 +35,13 @@ class SuratMasukController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SuratMasukRequest $request)
     {
-        dd($request->all());
+        $data = $request->all();
+        $data['fileSurat'] = $request->file('fileSurat')->store('file-surat-masuk', 'public');
+
+        SuratMasuk::create($data);
+        return redirect()->route('surat-masuk.index')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
