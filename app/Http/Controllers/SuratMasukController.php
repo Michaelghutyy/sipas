@@ -13,6 +13,7 @@ class SuratMasukController extends Controller
      */
     public function index()
     {
+
         return view('pages.suratmasuk.index');
     }
 
@@ -34,7 +35,7 @@ class SuratMasukController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     /**
