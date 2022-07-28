@@ -17,5 +17,11 @@ class SuratMasuk extends Model
         'asalSurat',
         'perihal',
         'fileSurat',
+        'disposisi_id',
     ];
+
+    public function disposisi()
+    {
+        return $this->belongsTo(Disposisi::class);
+    }
 }

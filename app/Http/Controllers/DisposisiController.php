@@ -3,12 +3,11 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
-use App\Models\SuratMasuk;
+use App\Models\Disposisi;
 use Illuminate\Http\Request;
-use App\Http\Requests\SuratMasukRequest;
 use Yajra\DataTables\Facades\DataTables;
 
-class SuratMasukController extends Controller
+class DisposisiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,43 +16,33 @@ class SuratMasukController extends Controller
      */
     public function index(Request $request)
     {
+
         if (request()->ajax()) {
-            $query = SuratMasuk::all();
+            $query = Disposisi::all();
             return Datatables::of($query)
-                ->addColumn('action', function ($item) {
-                    $pathToFile = asset('storage/file-surat-masuk/' . $item->fileSurat);    
+                ->addColumn('action', function ($item) {    
                     return '
-                        <a class="btn btn-warning" href="' . route('surat-masuk.edit', $item->id) . '">
+                        <a class="btn btn-warning" href="' . route('disposisi.edit', $item->id) . '">
                             <i class="fas fa-pencil"></i> Ubah  
                         </a>
                         <button class="btn btn-danger delete_modal" type="button" data-id="' . $item->id . '" data-toggle="modal" data-target="#exampleModal">
                             <i class="fas fa-trash"></i> Hapus  
                         </button>
-                        <a download class="btn btn-success" href="' . $pathToFile .'">
-                            <i class="fas fa-file-download"></i> Download File Surat
+                        <a class="btn btn-info" href="' . route('disposisi.show', $item->id) . '">
+                            <i class="fas fa-eye"></i> Lihat
                         </a>
-                        <a class="btn btn-primary" href="' . route('disposisi.index') . '">
-                            <i class="fas fa-tasks"></i> Disposisi
-                        </a>
-
                     ';
                 })
-                ->editColumn('tglSurat', function($item) {
+                ->editColumn('batasWaktu', function($item) {
                     return '    
-                        ' . Carbon::parse($item->tglSurat)->format('d M Y') . '
+                        ' . Carbon::parse($item->batasWaktu)->format('d M Y') . '
                     ';
                 })
-                ->editColumn('tglsuratMasuk', function($item) {
-                    return '
-                        ' . Carbon::parse($item->tglsuratMasuk)->format('d M Y') . '
-                    ';
-                })
-                ->rawColumns(['action', 'tglSurat', 'tglsuratMasuk'])
+                ->rawColumns(['action', 'batasWaktu'])
                 ->addIndexColumn()
                 ->make();
         }
-
-        return view('pages.suratmasuk.index');
+        return view('pages.disposisi.index');
     }
 
     /**
@@ -63,7 +52,7 @@ class SuratMasukController extends Controller
      */
     public function create()
     {
-        return view('pages.suratmasuk.create');
+        return view('pages.disposisi.create');
     }
 
     /**
@@ -72,16 +61,12 @@ class SuratMasukController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(SuratMasukRequest $request)
+    public function store(Request $request)
     {
         $data = $request->all();
-        if($request->hasFile('fileSurat')) {
-            $data['fileSurat'] = $request->fileSurat->getClientOriginalName();  
-            $request->fileSurat->storeAs('file-surat-masuk', $data['fileSurat'], 'public');
-        }
+        Disposisi::create($data);
 
-        SuratMasuk::create($data);
-        return redirect()->route('surat-masuk.index')->with('success', 'Data berhasil ditambahkan');
+        return redirect()->route('disposisi.index')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -92,7 +77,8 @@ class SuratMasukController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = Disposisi::findOrFail($id);
+        return view('pages.disposisi.show', compact('data'));   
     }
 
     /**
@@ -103,7 +89,8 @@ class SuratMasukController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Disposisi::findOrFail($id);
+        return view('pages.disposisi.edit', compact('data'));
     }
 
     /**
@@ -115,7 +102,9 @@ class SuratMasukController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = Disposisi::findOrFail($id);
+        $data->update($request->all());
+        return redirect()->route('disposisi.index')->with('success', 'Data berhasil diubah');
     }
 
     /**

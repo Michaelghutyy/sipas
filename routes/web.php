@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\SuratMasukController;
+use App\Http\Controllers\DisposisiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,9 +20,9 @@ use App\Http\Controllers\SuratMasukController;
 
 Route::get('/', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login.index');
 Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login'])->name('login');
-
 Route::post('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('surat-masuk', SuratMasukController::class);
+Route::resource('disposisi', DisposisiController::class);

@@ -19,7 +19,7 @@ class CreateDisposisisTable extends Migration
             $table->date('batasWaktu');
             $table->text('isiRingkasan');
             $table->string('sifat');
-            $table->text('Catatan');
+            $table->text('catatan');
             $table->timestamps();
         });
     }

@@ -1,17 +1,17 @@
 @extends('layouts.master')
 
-@section('title', 'Halaman Surat Masuk')
-@section('suratmasuk', 'active')
+@section('title', 'Halaman Disposisi')
 
 @section('content')
 <div class="container-fluid px-4">
-    <h1 class="mt-4">Surat Masuk</h1>
+    <h1 class="mt-4">Disposisi</h1>
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
-        <li class="breadcrumb-item active">Surat Masuk</li>
+        <li class="breadcrumb-item"><a href="{{ route('surat-masuk.index') }}">Surat Masuk</a></li>
+        <li class="breadcrumb-item active">Disposisi</li>
     </ol>
 
-    <a href="{{ route('surat-masuk.create') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm mb-4">
+    <a href="{{ route('disposisi.create') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm mb-4">
         <i class="fas fa-plus fa-sm text-white-50"></i>
         Tambah
     </a>
@@ -27,16 +27,13 @@
         <!-- Card Body -->
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-striped table-bordered dt-responsive nowrap w-100 display" id="tableSuratMasuk">
+                <table class="table table-striped table-bordered dt-responsive nowrap w-100 display" id="tableDisposisi">
                     <thead>
                         <tr>
                             <th width="70px">No</th>
-                            <th>Kode Surat Masuk</th>
-                            <th>No Surat Masuk</th>
-                            <th>Tanggal Surat</th>
-                            <th>Tanggal Surat Masuk</th>
-                            <th>Asal Surat</th>
-                            <th>Perihal</th>
+                            <th>Tujuan</th>
+                            <th>Batas Waktu</th>
+                            <th>Sifat</th>
                             <th width="150px">Action</th>
                         </tr>
                     </thead>
@@ -52,7 +49,7 @@
 
 @push('customjs')
 <script>
-    var datatable = $('#tableSuratMasuk').DataTable({
+    var datatable = $('#tableDisposisi').DataTable({
         processing: true,
         serverSide: true,
         ordering: true,
@@ -68,28 +65,20 @@
                 searchable: false
             },
             {
-                data: 'kodesuratMasuk',
-                name: 'kodesuratMasuk'
+                data: 'tujuan',
+                name: 'tujuan',
+                orderable: false,
+                searchable: false,
             },
             {
-                data: 'nosuratMasuk',
-                name: 'nosuratMasuk',
+                data: 'batasWaktu',
+                name: 'batasWaktu',
             },
             {
-                data: 'tglSurat',
-                name: 'tglSurat',
-            },
-            {
-                data: 'tglsuratMasuk',
-                name: 'tglsuratMasuk',
-            },
-            {
-                data: 'asalSurat',
-                name: 'asalSurat',
-            },
-            {
-                data: 'perihal',
-                name: 'perihal',
+                data: 'sifat',
+                name: 'sifat',
+                orderable: false,
+                searchable: false,
             },
             {
                 data: 'action',
@@ -102,7 +91,7 @@
         sDom: '<"secondBar d-flex flex-wrap justify-content-between mb-2"lf>rt<"bottom"p>',
 
         "fnCreatedRow": function(nRow, data) {
-            $(nRow).attr('id', 'testimoni' + data.id);
+            $(nRow).attr('id', 'disposisi' + data.id);
         },
     });
 
