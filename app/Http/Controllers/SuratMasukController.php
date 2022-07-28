@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\SuratMasuk;
 use Illuminate\Http\Request;
 use App\Http\Requests\SuratMasukRequest;
+use Yajra\DataTables\Facades\DataTables;
 
 class SuratMasukController extends Controller
 {
@@ -13,8 +15,43 @@ class SuratMasukController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        if (request()->ajax()) {
+            $query = SuratMasuk::all();
+            return Datatables::of($query)
+                ->addColumn('action', function ($item) {
+                    $pathToFile = asset('storage/file-surat-masuk/' . $item->fileSurat);      
+                    return '
+                        <a class="btn btn-warning" href="' . route('surat-masuk.edit', $item->id) . '">
+                            <i class="fas fa-pencil"></i> Ubah  
+                        </a>
+                        <button class="btn btn-danger delete_modal" type="button" data-id="' . $item->id . '" data-toggle="modal" data-target="#exampleModal">
+                            <i class="fas fa-trash"></i> Hapus  
+                        </button>
+                        <a download class="btn btn-success" href="' . $pathToFile .'">
+                            <i class="fas fa-file-download"></i> Download File Surat
+                        </a>
+                        <a href class="btn btn-primary" href="">
+                        <i class="fas fa-tasks"></i> Disposisi
+                        </a>
+
+                    ';
+                })
+                ->editColumn('tglSurat', function($item) {
+                    return '    
+                        ' . Carbon::parse($item->tglSurat)->format('d M Y') . '
+                    ';
+                })
+                ->editColumn('tglsuratMasuk', function($item) {
+                    return '
+                        ' . Carbon::parse($item->tglsuratMasuk)->format('d M Y') . '
+                    ';
+                })
+                ->rawColumns(['action', 'tglSurat', 'tglsuratMasuk'])
+                ->addIndexColumn()
+                ->make();
+        }
 
         return view('pages.suratmasuk.index');
     }
@@ -38,7 +75,10 @@ class SuratMasukController extends Controller
     public function store(SuratMasukRequest $request)
     {
         $data = $request->all();
-        $data['fileSurat'] = $request->file('fileSurat')->store('file-surat-masuk', 'public');
+        if($request->hasFile('fileSurat')) {
+            $data['fileSurat'] = $request->fileSurat->getClientOriginalName();  
+            $request->fileSurat->storeAs('file-surat-masuk', $data['fileSurat'], 'public');
+        }
 
         SuratMasuk::create($data);
         return redirect()->route('surat-masuk.index')->with('success', 'Data berhasil ditambahkan');

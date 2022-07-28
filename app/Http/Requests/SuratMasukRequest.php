@@ -58,7 +58,7 @@ class SuratMasukRequest extends FormRequest
             'perihal.required'        => 'Perihal harus diisi',
             'fileSurat.required'      => 'File Surat harus diisi',
             'fileSurat.mimes'         => 'File Surat harus berupa file PDF, DOC, DOCX',
-            'fileSurat.max'           => 'File Surat tidak boleh lebih dari 10 MB',
+            'fileSurat.max'           => 'File Surat tidak boleh lebih dari 5 MB',
         ];
     }
 }
