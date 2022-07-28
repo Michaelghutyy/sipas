@@ -22,6 +22,8 @@ class CreateSuratMasuksTable extends Migration
             $table->string('asalSurat');
             $table->string('perihal');
             $table->string('fileSurat');
+            $table->unsignedBigInteger('disposisi_id')->nullable();
+            $table->foreign('disposisi_id')->references('id')->on('disposisis')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
