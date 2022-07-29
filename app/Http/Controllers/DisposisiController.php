@@ -25,7 +25,7 @@ class DisposisiController extends Controller
                         <a class="btn btn-warning" href="' . route('disposisi.edit', $item->id) . '">
                             <i class="fas fa-pencil"></i> Ubah  
                         </a>
-                        <button class="btn btn-danger delete_modal" type="button" data-id="' . $item->id . '" data-toggle="modal" data-target="#exampleModal">
+                        <button class="btn btn-danger delete_modal" type="button" data-id="' . $item->id . '" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             <i class="fas fa-trash"></i> Hapus  
                         </button>
                         <a class="btn btn-info" href="' . route('disposisi.show', $item->id) . '">
@@ -115,6 +115,9 @@ class DisposisiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = Disposisi::findOrFail($id);
+        $data->delete();
+
+        return response()->json($data);
     }
 }
