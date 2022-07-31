@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Input Disposisi')
+@section('title', 'Detail Disposisi')
 
 @section('content')
 <div class="container-fluid px-4">

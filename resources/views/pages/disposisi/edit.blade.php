@@ -1,10 +1,10 @@
 @extends('layouts.master')
 
-@section('title', 'Input Disposisi')
+@section('title', 'Edit Disposisi')
 
 @section('content')
 <div class="container-fluid px-4">
-    <h1 class="mt-4">Input Disposisi</h1>
+    <h1 class="mt-4">Edit Disposisi</h1>
     
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>

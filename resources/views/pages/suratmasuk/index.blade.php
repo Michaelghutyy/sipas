@@ -23,6 +23,10 @@
         </div>
     @endif
 
+    <div class="delete-response">
+
+    </div>
+
     <div class="card shadow mb-4">
         <!-- Card Body -->
         <div class="card-body">
@@ -44,6 +48,31 @@
 
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Konfirmasi Hapus!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Anda yakin ingin menghapus data Surat Masuk ini ?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger delete-suratmasuk" value="">
+                    <strong>
+                        Hapus
+                    </strong>
+                </button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    Batal
+                </button>
             </div>
         </div>
     </div>
@@ -102,36 +131,36 @@
         sDom: '<"secondBar d-flex flex-wrap justify-content-between mb-2"lf>rt<"bottom"p>',
 
         "fnCreatedRow": function(nRow, data) {
-            $(nRow).attr('id', 'testimoni' + data.id);
+            $(nRow).attr('id', 'surat-masuk' + data.id);
         },
     });
 
     $(document).on("click", ".delete_modal", function() {
         var id = $(this).data('id');
-        $(".modal-footer .delete-testimoni").val(id);
+        $(".modal-footer .delete-suratmasuk").val(id);
     });
 
-    // jQuery(document).ready(function($) {
-    //     ////----- DELETE a link and remove from the page -----////
-    //     jQuery('.delete-testimoni').click(function() {
-    //         var testimoni_id = $(this).val();
-    //         $.ajaxSetup({
-    //             headers: {
-    //                 'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
-    //             }
-    //         });
-    //         $.ajax({
-    //             type: "DELETE",
-    //             url: 'testimoni/' + testimoni_id,
-    //             success: function(data) {
-    //                 $('#exampleModal').modal('hide');
-    //                 $("#testimoni" + testimoni_id).remove();
-    //                 $(".delete-response").append(
-    //                     '<div class="alert alert-success alert-dismissible fade show" role="alert">Data Testimoni Berhasil Di Hapus<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true"> &times; </span></button></div>'
-    //                 )
-    //             }
-    //         });
-    //     });
-    // });
+    jQuery(document).ready(function($) {
+        ////----- DELETE a link and remove from the page -----////
+        jQuery('.delete-suratmasuk').click(function() {
+            var suratmasuk_id = $(this).val();
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                type: "DELETE",
+                url: 'surat-masuk/' + suratmasuk_id,
+                success: function(data) {
+                    $('#exampleModal').modal('hide');
+                    $("#surat-masuk" + suratmasuk_id).remove();
+                    $(".delete-response").append(
+                        '<div class="alert alert-success alert-dismissible fade show" role="alert">Data Surat Masuk Berhasil Di Hapus<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
+                    )
+                }
+            });
+        });
+    });
 </script>
 @endpush

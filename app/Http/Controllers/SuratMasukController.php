@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use App\Models\Disposisi;
 use App\Models\SuratMasuk;
 use Illuminate\Http\Request;
 use App\Http\Requests\SuratMasukRequest;
@@ -26,9 +27,12 @@ class SuratMasukController extends Controller
                         <a class="btn btn-warning" href="' . route('surat-masuk.edit', $item->id) . '">
                             <i class="fas fa-pencil"></i> Ubah  
                         </a>
-                        <button class="btn btn-danger delete_modal" type="button" data-id="' . $item->id . '" data-toggle="modal" data-target="#exampleModal">
+                        <button class="btn btn-danger delete_modal" type="button" data-id="' . $item->id . '" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             <i class="fas fa-trash"></i> Hapus  
                         </button>
+                        <a class="btn btn-info" href="' . route('surat-masuk.show', $item->id) . '">
+                            <i class="fas fa-eye"></i> Lihat
+                        </a>
                         <a download class="btn btn-success" href="' . $pathToFile .'">
                             <i class="fas fa-file-download"></i> Download File Surat
                         </a>
@@ -92,7 +96,8 @@ class SuratMasukController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = SuratMasuk::findOrFail($id);
+        return view('pages.suratmasuk.show', compact('data'));
     }
 
     /**
@@ -103,7 +108,9 @@ class SuratMasukController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = SuratMasuk::findOrFail($id);
+        $disposisi = Disposisi::all();
+        return view('pages.suratmasuk.edit', compact('data', 'disposisi'));
     }
 
     /**
@@ -113,9 +120,16 @@ class SuratMasukController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SuratMasukRequest $request, $id)
     {
-        //
+        $cek = SuratMasuk::findOrFail($id);
+        $data = $request->all();
+        if($request->hasFile('fileSurat')) {
+            $data['fileSurat'] = $request->fileSurat->getClientOriginalName();  
+            $request->fileSurat->storeAs('file-surat-masuk', $data['fileSurat'], 'public');
+        }
+        $cek->update($data);
+        return redirect()->route('surat-masuk.index')->with('success', 'Data berhasil diubah');
     }
 
     /**
@@ -126,6 +140,9 @@ class SuratMasukController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = SuratMasuk::findOrFail($id);
+        $data->delete();
+
+        return response()->json($data);
     }
 }
