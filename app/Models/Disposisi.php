@@ -16,4 +16,8 @@ class Disposisi extends Model
         'sifat',
         'catatan',
     ];
+
+    public function suratmasuk() {
+        return $this->hasMany(SuratMasuk::class);
+    }
 }

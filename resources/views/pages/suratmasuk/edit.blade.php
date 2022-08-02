@@ -77,7 +77,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <label for="disposisi" class="form-label">Disposisi</label>
-                            <select class="form-control" name="disposisi" id="disposisi" required>
+                            <select class="form-control" name="disposisi_id" id="disposisi_id" required>
                                 <option value="" selected disabled>Pilih Disposisi</option>
                                 @foreach ($disposisi as $d)
                                     <option value="{{ $d->id }}" {{ ($d->id == $data->disposisi_id) ? 'selected' : '' }}>{{ $d->tujuan }} : {{ $d->batasWaktu }}</option>
@@ -91,7 +91,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <label for="fileSurat" class="form-label">File Surat</label>
-                            <input type="file" class="form-control" name="fileSurat" id="fileSurat" required>
+                            <input type="file" class="form-control" name="fileSurat" id="fileSurat">
                         </div>
                     </div>
                 </div>

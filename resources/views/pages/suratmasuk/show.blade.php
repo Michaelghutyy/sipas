@@ -76,7 +76,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <label for="disposisi" class="form-label">Disposisi</label>
-                            <input type="text" class="form-control" name="disposisi" id="disposisi" value="{{ old('disposisi', $data->disposisi) == "" ? '-' : $data->disposisi }}" placeholder="Masukkan Disposisi" disabled>
+                            <input type="text" class="form-control" name="disposisi" id="disposisi" value="{{ old('disposisi', $data->disposisi) == "" ? '-' : $data->disposisi->tujuan }}" placeholder="Masukkan Disposisi" disabled>
                         </div>
                     </div>
                 </div>

@@ -2,8 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\SuratMasukController;
 use App\Http\Controllers\DisposisiController;
+use App\Http\Controllers\SuratMasukController;
+use App\Http\Controllers\SuratKeluarController;
+use App\Models\SuratMasuk;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,5 +26,7 @@ Route::post('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logou
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('surat-masuk', SuratMasukController::class);
 Route::resource('disposisi', DisposisiController::class);
+Route::resource('surat-masuk', SuratMasukController::class);
+Route::get('laporan-suratmasuk', SuratMasukController::class . '@laporan')->name('surat-masuk.laporan');    // laporan surat masuk
+Route::resource('surat-keluar', SuratKeluarController::class);

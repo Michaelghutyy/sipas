@@ -10,7 +10,7 @@
                 <div class="sb-nav-link-icon"><i class="fas fa-mail-bulk"></i></div>
                 Surat Masuk
             </a>
-            <a class="nav-link" href="tables.html">
+            <a class="nav-link @yield('suratkeluar')" href="{{ route('surat-keluar.index') }}">
                 <div class="sb-nav-link-icon"><i class="fas fa-paper-plane"></i></div>
                 Surat Keluar
             </a>

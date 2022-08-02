@@ -16,6 +16,11 @@
         Tambah
     </a>
 
+    <a href="{{ route('surat-masuk.laporan') }}" class="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm mb-4">
+        <i class="fas fa-file-pdf fa-sm text-white-50"></i>
+        Export PDF
+    </a>
+
     <!-- Alert -->
     @if ($message = Session::get('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">

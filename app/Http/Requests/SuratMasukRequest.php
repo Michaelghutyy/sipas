@@ -31,7 +31,7 @@ class SuratMasukRequest extends FormRequest
                 'tglsuratMasuk'  => 'required|date',
                 'asalSurat'      => 'required|string|max:255',
                 'perihal'        => 'required|string|max:255',
-                'fileSurat'      => 'required|mimes:pdf,doc,docx|max:5120',
+                'fileSurat'      => 'mimes:pdf,doc,docx|max:5120',
             ];
         }else{
             $rules = [

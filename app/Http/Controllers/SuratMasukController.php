@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use PDF;
 use Carbon\Carbon;
 use App\Models\Disposisi;
 use App\Models\SuratMasuk;
@@ -144,5 +145,21 @@ class SuratMasukController extends Controller
         $data->delete();
 
         return response()->json($data);
+    }
+
+    public function laporan() {
+        $today = Carbon::now()->format('d M Y');
+
+        $data = SuratMasuk::get();
+        // return view('laporan.laporansuratmasuk', [
+        //     'data' => $data,
+        //     'title' => 'Laporan Surat Masuk',
+        // ]);
+        $cek = PDF::loadview('laporan.laporansuratmasuk', [
+            'data'  => $data,
+            'title' => 'Laporan Surat Masuk',
+        ])->setPaper('a4', 'landscape');
+        
+        return $cek->download('laporan-surat-masuk-' . $today . '.pdf');
     }
 }
