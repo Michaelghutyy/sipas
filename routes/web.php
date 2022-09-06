@@ -29,4 +29,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('disposisi', DisposisiController::class);
 Route::resource('surat-masuk', SuratMasukController::class);
 Route::get('laporan-suratmasuk', SuratMasukController::class . '@laporan')->name('surat-masuk.laporan');    // laporan surat masuk
+
 Route::resource('surat-keluar', SuratKeluarController::class);
+Route::get('laporan-suratkeluar', SuratKeluarController::class . '@laporan')->name('surat-keluar.laporan');    // laporan surat keluar
