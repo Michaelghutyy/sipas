@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DisposisiController;
 use App\Http\Controllers\SuratMasukController;
 use App\Http\Controllers\SuratKeluarController;
+use App\Http\Controllers\ChangePasswordController;
 use App\Models\SuratMasuk;
 
 /*
@@ -25,6 +26,8 @@ Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login'
 Route::post('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::resource('ChangePassword', ChangePasswordController::class);
 
 Route::resource('disposisi', DisposisiController::class);
 Route::resource('surat-masuk', SuratMasukController::class);
