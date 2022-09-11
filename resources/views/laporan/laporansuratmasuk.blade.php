@@ -10,54 +10,45 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="col-lg-12 mt-5">
         <div class="row justify-content-center">
-            <div class="col-md-12 mt-5">
-                <h3 class="text-center">{{ $title }}</h3>
-                <div class="table-responsive">
-                    <table class="table table-bordered col-12 text-center" width="100%">
-                        <thead>
+            <h3 class="text-center">{{ $title }}</h3>
+                <table border="1px" class="table table-bordered text-center">
+                    <thead>
+                        <tr>
+                            <th scope="row">#</th>
+                            <th>Kode Surat</th>
+                            <th>No Surat Masuk</th>
+                            <th>Tanggal Surat</th>
+                            <th>Tanggal Surat Masuk</th>
+                            <th>Asal Surat</th>
+                            <th>Perihal</th>
+                            <th>Disposisi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @php $no = 1; @endphp
+                        @foreach ($data as $d)    
                             <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Kode Surat</th>
-                                <th scope="col">No Surat Masuk</th>
-                                <th scope="col">Tanggal Surat</th>
-                                <th scope="col">Tanggal Surat Masuk</th>
-                                <th scope="col">Asal Surat</th>
-                                <th scope="col">Perihal</th>
-                                <th scope="col">Disposisi</th>
+                                <th scope="row">{{ $no++ }}</th>
+                                <td>{{ $d->kodesuratMasuk }}</td>
+                                <td>{{ $d->nosuratMasuk }}</td>
+                                <td>{{ $d->tglSurat }}</td>
+                                <td>{{ $d->tglsuratMasuk }}</td>
+                                <td>{{ $d->asalSurat }}</td>
+                                <td>{{ $d->perihal }}</td>
+                                @if($d->disposisi_id == "")
+                                    <td>Belum Disposisi</td>
+                                @else
+                                    <td>{{ $d->disposisi->tujuan }}</td>
+                                @endif
                             </tr>
-                        </thead>
-                        <tbody>
-                            @php $no = 1; @endphp
-                            @foreach ($data as $d)    
-                                <tr>
-                                    <th scope="row">{{ $no++ }}</th>
-                                    <td>{{ $d->kodesuratMasuk }}</td>
-                                    <td>{{ $d->nosuratMasuk }}</td>
-                                    <td>{{ $d->tglSurat }}</td>
-                                    <td>{{ $d->tglsuratMasuk }}</td>
-                                    <td>{{ $d->asalSurat }}</td>
-                                    <td>{{ $d->perihal }}</td>
-                                    @if($d->disposisi_id == "")
-                                        <td>Belum Disposisi</td>
-                                    @else
-                                        <td>{{ $d->disposisi->tujuan }}</td>
-                                    @endif
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+                        @endforeach
+                    </tbody>
+                </table>
         </div>
     </div>
-
-    
-    <!-- Optional JavaScript; choose one of the two! -->
-
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> --}}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 
 </html>

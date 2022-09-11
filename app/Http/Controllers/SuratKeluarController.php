@@ -141,8 +141,14 @@ class SuratKeluarController extends Controller
     }
 
     public function laporan() {
-        $data = SuratKeluar::all();
-        $pdf = PDF::loadView('pages.suratkeluar.laporan', compact('data'));
-        return $pdf->download('laporan-surat-keluar.pdf');
+        $today = Carbon::now()->format('d M Y');
+
+        $data = SuratKeluar::orderBy('tglpembuatanSurat', 'DESC')->get();
+        $pdf = PDF::loadView('laporan.laporansuratkeluar', [
+            'data'  => $data,
+            'title' => 'Laporan Surat Keluar',
+        ])->setPaper('a4', 'landscape');
+
+        return $pdf->download('laporan-surat-keluar-' . $today . '.pdf');
     }
 }

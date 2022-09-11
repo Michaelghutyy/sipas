@@ -150,7 +150,7 @@ class SuratMasukController extends Controller
     public function laporan() {
         $today = Carbon::now()->format('d M Y');
 
-        $data = SuratMasuk::get();
+        $data = SuratMasuk::orderBy('tglSuratMasuk', 'DESC')->get();
         // return view('laporan.laporansuratmasuk', [
         //     'data' => $data,
         //     'title' => 'Laporan Surat Masuk',
