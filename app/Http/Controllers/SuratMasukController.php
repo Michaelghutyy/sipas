@@ -8,6 +8,7 @@ use App\Models\Disposisi;
 use App\Models\SuratMasuk;
 use Illuminate\Http\Request;
 use App\Http\Requests\SuratMasukRequest;
+// use Barryvdh\DomPDF\PDF;
 use Yajra\DataTables\Facades\DataTables;
 
 class SuratMasukController extends Controller
