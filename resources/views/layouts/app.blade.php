@@ -18,8 +18,14 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet" type="text/css">
+	<link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+	<link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+	<link href="{{ asset('css/bootstrap-theme.min.css') }}" rel="stylesheet" type="text/css">
+	<link href="{{ asset('css/bootstrap-social.css') }}" rel="stylesheet" type="text/css">	
+	<link href="{{ asset('css/templatemo_style.css') }}" rel="stylesheet" type="text/css">	
 </head>
-<body>
+<body class="templatemo-bg-image-1">
     <div id="app">
         {{-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
