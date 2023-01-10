@@ -3,14 +3,14 @@
 @section('title', 'Halaman Surat Keluar')
 @section('suratkeluar', 'active')
 
-@section('content')
-<div class="container-fluid px-4">
-    <h1 class="mt-4">Surat Keluar</h1>
-    <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
-        <li class="breadcrumb-item active">Surat Keluar</li>
-    </ol>
+@section('page-title', 'Surat Keluar')
 
+@section('breadcrumb')
+    <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
+    <li class="breadcrumb-item active">Surat Keluar</li>
+@endsection
+
+@section('content')
     <a href="{{ route('surat-keluar.create') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm mb-4">
         <i class="fas fa-plus fa-sm text-white-50"></i>
         Tambah
@@ -57,7 +57,6 @@
             </div>
         </div>
     </div>
-</div>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

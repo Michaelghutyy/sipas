@@ -3,13 +3,14 @@
 @section('title', 'Edit Surat Masuk')
 @section('suratmasuk', 'active')
 
+@section('page-title', 'Edit Surat Masuk')
+
+@section('breadcrumb')
+    <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
+    <li class="breadcrumb-item active">Surat Masuk</li>
+@endsection
+
 @section('content')
-<div class="container-fluid px-4">
-    <h1 class="mt-4">Edit Surat Masuk</h1>
-    <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
-        <li class="breadcrumb-item active">Surat Masuk</li>
-    </ol>
     
     <a href="{{ route('surat-masuk.index') }}" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm mb-4">
         <i class="fas fa-angle-left fa-sm text-white-50"></i>
@@ -106,5 +107,4 @@
             </form>
         </div>
     </div>
-</div>
 @endsection

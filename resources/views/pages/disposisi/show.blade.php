@@ -2,17 +2,16 @@
 
 @section('title', 'Detail Disposisi')
 
+@section('page-title', 'Detail Disposisi')
+
+@section('breadcrumb')
+    <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('surat-masuk.index') }}">Surat Masuk</a></li>
+    <li class="breadcrumb-item active">Disposisi</li>
+@endsection
+
 @section('content')
-<div class="container-fluid px-4">
-    <h1 class="mt-4">Detail Disposisi</h1>
-    
-    <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('surat-masuk.index') }}">Surat Masuk</a></li>
-        <li class="breadcrumb-item active">Disposisi</li>
-    </ol>
-    
-    <a href="{{ route('disposisi.index') }}" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm mb-4">
+        <a href="{{ route('disposisi.index') }}" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm mb-4">
         <i class="fas fa-angle-left fa-sm text-white-50"></i>
         Kembali
     </a>
@@ -71,5 +70,4 @@
             </form>
         </div>
     </div>
-</div>
 @endsection
