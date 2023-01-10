@@ -2,15 +2,15 @@
 
 @section('title', 'Halaman Disposisi')
 
-@section('content')
-<div class="container-fluid px-4">
-    <h1 class="mt-4">Disposisi</h1>
-    <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('surat-masuk.index') }}">Surat Masuk</a></li>
-        <li class="breadcrumb-item active">Disposisi</li>
-    </ol>
+@section('page-title', 'Disposisi')
 
+@section('breadcrumb')
+    <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('surat-masuk.index') }}">Surat Masuk</a></li>
+    <li class="breadcrumb-item active">Disposisi</li>
+@endsection
+
+@section('content')
     <a href="{{ route('surat-masuk.index') }}" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm mb-4">
         <i class="fas fa-angle-left fa-sm text-white-50"></i>
         Kembali
@@ -53,7 +53,6 @@
             </div>
         </div>
     </div>
-</div>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
