@@ -15,10 +15,12 @@ class CreateSuratKeluarsTable extends Migration
     {
         Schema::create('surat_keluars', function (Blueprint $table) {
             $table->id();
+
             $table->string('kodesuratKeluar');
-            $table->string('nosuratKeluar');
             $table->date('tglpembuatanSurat');
             $table->date('tglpengirimanSurat');
+            $table->string('namaPenerima')->nullable();
+            $table->date('tglSuratDiterima')->nullable();
             $table->string('tujuanSurat');
             $table->string('perihal');
             $table->string('pembuat');

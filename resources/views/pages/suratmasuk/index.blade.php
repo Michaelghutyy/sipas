@@ -41,11 +41,12 @@
                         <tr>
                             <th width="70px">No</th>
                             <th>Kode Surat Masuk</th>
-                            <th>No Surat Masuk</th>
-                            <th>Tanggal Surat</th>
+                            <th>Nama Penerima</th>
+                            <th>Tanggal Di terima</th>
                             <th>Tanggal Surat Masuk</th>
                             <th>Asal Surat</th>
                             <th>Perihal</th>
+                            <th>Status</th>
                             <th width="150px">Action</th>
                         </tr>
                     </thead>
@@ -106,12 +107,12 @@
                 name: 'kodesuratMasuk'
             },
             {
-                data: 'nosuratMasuk',
-                name: 'nosuratMasuk',
+                data: 'namaPenerima',
+                name: 'namaPenerima',
             },
             {
-                data: 'tglSurat',
-                name: 'tglSurat',
+                data: 'tglSuratDiterima',
+                name: 'tglSuratDiterima',
             },
             {
                 data: 'tglsuratMasuk',
@@ -127,6 +128,12 @@
                 name: 'perihal',
                 orderable: false,
             },
+            {
+                data: 'status',
+                name: 'status',
+                orderable: false,
+            },
+           
             {
                 data: 'action',
                 name: 'action',

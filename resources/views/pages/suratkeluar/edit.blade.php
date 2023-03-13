@@ -33,15 +33,30 @@
             <form action="{{ route('surat-keluar.update', $data->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
-                <div class="form-group">
+                <strong class="text-center d-block">Data Penerima</strong>
+                <hr>
+                <div class="from-group">
                     <div class="row">
                         <div class="col-md-6">
-                            <label for="kodesuratKeluar" class="form-label">Kode Surat Keluar</label>
-                            <input type="text" class="form-control" id="kodesuratKeluar" name="kodesuratKeluar" placeholder="Masukkan Kode Surat Keluar" value="{{ old('kodesuratKeluar', $data->kodesuratKeluar) }}" disabled>
+                            <label for="namaPenerima" class="form-label">Nama Penerima Surat</label>
+                            <input type="text" class="form-control" name="namaPenerima" id="namaPenerima" placeholder="" value="{{ old('namaPenerima', $data->namaPenerima) }}">
                         </div>
                         <div class="col-md-6">
-                            <label for="nosuratKeluar" class="form-label">No Surat Keluar</label>
-                            <input type="text" class="form-control" id="nosuratKeluar" name="nosuratKeluar" placeholder="Masukkan No Surat Keluar" value="{{ old('nosuratKeluar', $data->nosuratKeluar) }}" required>
+                            <label for="tglSuratDiterima" class="form-label">Tanggal Surat Diterima</label>
+                            <input type="date" class="form-control" name="tglSuratDiterima" id="tglSuratDiterima" value="{{ old('tglSuratDiterima', $data->tglSuratDiterima) }}">
+                        </div>
+                    </div>
+                </div>
+
+                <br><hr>
+                <strong class="text-center d-block">Data Surat</strong>
+                <hr>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="kodesuratKeluar" class="form-label">Kode Surat Keluar</label>
+                            <input type="text" class="form-control" id="kodesuratKeluar" name="kodesuratKeluar" placeholder="Masukkan Kode Surat Keluar" value="{{ old('kodesuratKeluar', $data->kodesuratKeluar) }}" disabled>
                         </div>
                     </div>
                 </div>
@@ -86,7 +101,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <label for="fileSurat" class="form-label">File Surat</label>
-                            <input type="file" class="form-control" name="fileSurat" id="fileSurat" required>
+                            <input type="file" class="form-control" name="fileSurat" id="fileSurat">
                         </div>
                     </div>
                 </div>

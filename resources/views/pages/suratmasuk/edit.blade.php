@@ -41,8 +41,8 @@
                             <input type="text" class="form-control" id="kodesuratMasuk" name="kodesuratMasuk" placeholder="Kode Surat Masuk" value="{{ old('kodesuratMasuk', $data->kodesuratMasuk) }}" disabled>
                         </div>
                         <div class="col-md-6">
-                            <label for="nosuratMasuk" class="form-label">No Surat Masuk</label>
-                            <input type="text" class="form-control" id="nosuratMasuk" name="nosuratMasuk" placeholder="No Surat Masuk" value="{{ old('nosuratMasuk', $data->nosuratMasuk) }}" required>
+                            <label for="namaPenerima" class="form-label">Nama Penerima</label>
+                            <input type="text" class="form-control" name="namaPenerima" id="namaPenerima" value="{{ old('namaPenerima', $data->namaPenerima) }}" placeholder="Masukan Nama Penerima" required>
                         </div>
                     </div>
                 </div>
@@ -50,12 +50,12 @@
                 <div class="form-group">
                     <div class="row">
                         <div class="col-md-6">
-                            <label for="tglSurat" class="form-label">Tanggal Surat</label>
-                            <input type="date" class="form-control" name="tglSurat" id="tglSurat" value="{{ old('tglSurat', $data->tglSurat) }}" required>
-                        </div>
-                        <div class="col-md-6">
                             <label for="tglsuratMasuk" class="form-label">Tanggal Surat Masuk</label>
                             <input type="date" class="form-control" name="tglsuratMasuk" id="tglsuratMasuk" value="{{ old('tglsuratMasuk', $data->tglsuratMasuk) }}" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="tglSurat" class="form-label">Tanggal Surat Diterima</label>
+                            <input type="date" class="form-control" name="tglSuratDiterima" id="tglSuratDiterima" value="{{ old('tglSuratDiterima', $data->tglSuratDiterima) }}" required>
                         </div>
                     </div>
                 </div>
@@ -78,7 +78,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <label for="disposisi" class="form-label">Disposisi</label>
-                            <select class="form-control" name="disposisi_id" id="disposisi_id" required>
+                            <select class="form-control" name="disposisi_id" id="disposisi_id">
                                 <option value="" selected disabled>Pilih Disposisi</option>
                                 @foreach ($disposisi as $d)
                                     <option value="{{ $d->id }}" {{ ($d->id == $data->disposisi_id) ? 'selected' : '' }}>{{ $d->tujuan }} : {{ $d->batasWaktu }}</option>

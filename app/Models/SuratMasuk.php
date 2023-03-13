@@ -10,9 +10,9 @@ class SuratMasuk extends Model
     use HasFactory;
 
     protected $fillable = [
+        'namaPenerima',
         'kodesuratMasuk',
-        'nosuratMasuk',
-        'tglSurat',
+        'tglSuratDiterima',
         'tglsuratMasuk',
         'asalSurat',
         'perihal',

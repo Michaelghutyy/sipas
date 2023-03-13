@@ -26,7 +26,6 @@ class SuratKeluarRequest extends FormRequest
     {
         if(in_array($this->method(), ['PUT', 'PATCH'])) {
             $rules = [
-                'nosuratKeluar'       => 'required|string|max:255',
                 'tglpembuatanSurat'   => 'required|date',
                 'tglpengirimanSurat'  => 'required|date',
                 'tujuanSurat'         => 'required|string|max:255',
@@ -37,7 +36,6 @@ class SuratKeluarRequest extends FormRequest
         }else{
             $rules = [
                 'kodesuratKeluar'     => 'required|string|max:255',
-                'nosuratKeluar'       => 'required|string|max:255',
                 'tglpembuatanSurat'   => 'required|date',
                 'tglpengirimanSurat'  => 'required|date',
                 'tujuanSurat'         => 'required|string|max:255',

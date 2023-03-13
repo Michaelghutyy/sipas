@@ -37,11 +37,11 @@
                     <div class="row">
                         <div class="col-md-6">
                             <label for="kodesuratMasuk" class="form-label">Kode Surat Masuk</label>
-                            <input type="text" class="form-control" id="kodesuratMasuk" name="kodesuratMasuk" placeholder="Kode Surat Masuk" value="{{ old('kodesuratMasuk') }}" required>
+                            <input type="text" class="form-control" id="kodesuratMasuk" value="{{ old('kodesuratMasuk') }}" name="kodesuratMasuk" placeholder="Kode Surat Masuk" required>
                         </div>
                         <div class="col-md-6">
-                            <label for="nosuratMasuk" class="form-label">No Surat Masuk</label>
-                            <input type="text" class="form-control" id="nosuratMasuk" name="nosuratMasuk" placeholder="No Surat Masuk" value="{{ old('nosuratMasuk') }}" required>
+                            <label for="namaPenerima" class="form-label">Nama Penerima Surat</label>
+                            <input type="text" class="form-control" name="namaPenerima" id="namaPenerima" value="{{ old('namaPenerima') }}" placeholder="Masukan Nama Penerima" required>
                         </div>
                     </div>
                 </div>
@@ -49,12 +49,12 @@
                 <div class="form-group">
                     <div class="row">
                         <div class="col-md-6">
-                            <label for="tglSurat" class="form-label">Tanggal Surat</label>
-                            <input type="date" class="form-control" name="tglSurat" id="tglSurat" value="{{ old('tglSurat') }}" required>
-                        </div>
-                        <div class="col-md-6">
                             <label for="tglsuratMasuk" class="form-label">Tanggal Surat Masuk</label>
                             <input type="date" class="form-control" name="tglsuratMasuk" id="tglsuratMasuk" value="{{ old('tglsuratMasuk') }}" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="tglSuratDiterima" class="form-label">Tanggal Surat Diterima</label>
+                            <input type="date" class="form-control" name="tglSuratDiterima" id="tglSuratDiterima" value="{{ old('tglSuratDiterima') }}" required>
                         </div>
                     </div>
                 </div>

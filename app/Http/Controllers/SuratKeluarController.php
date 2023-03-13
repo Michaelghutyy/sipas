@@ -8,6 +8,7 @@ use App\Models\SuratKeluar;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 use App\Http\Requests\SuratKeluarRequest;
+use App\Models\SuratMasuk;
 
 class SuratKeluarController extends Controller
 {
@@ -33,11 +34,10 @@ class SuratKeluarController extends Controller
                         <a class="btn btn-info" href="' . route('surat-keluar.show', $item->id) . '">
                             <i class="fas fa-eye"></i> Lihat
                         </a>
-                        <a download class="btn btn-success" href="' . $pathToFile .'">
-                            <i class="fas fa-file-download"></i> Download File Surat
-                        </a>
-
-                    ';
+                        ';
+                        // <a download class="btn btn-success" href="' . $pathToFile .'">
+                        //     <i class="fas fa-file-download"></i> Download File Surat
+                        // </a> 
                 })
                 ->editColumn('tglpembuatanSurat', function($item) {
                     return '    
@@ -63,7 +63,25 @@ class SuratKeluarController extends Controller
      */
     public function create()
     {
-        return view('pages.suratkeluar.create');
+        $tanggal = Carbon::now();
+        $kode = "CIB/IMP-MT";
+        $bulanSurat = SuratKeluar::getRomawi($tanggal->month);
+        $tahunSurat = substr($tanggal->year, 2, 2);
+
+        $data = SuratKeluar::get()->max('kodesuratKeluar');
+        
+        if($data == null){
+            $kodeSurat = '001/'.$kode.'/'.$bulanSurat.'/'.$tahunSurat;
+        }else{
+            $noSurat = substr($data, 0, 3);
+            $noSurat = ++$noSurat;
+            $noSurat = sprintf("%03s", $noSurat);
+            $kodeSurat = $noSurat.'/'.$kode.'/'.$bulanSurat.'/'.$tahunSurat;
+        }
+
+        return view('pages.suratkeluar.create', [
+            'kodeSurat' => $kodeSurat
+        ]);
     }
 
     /**

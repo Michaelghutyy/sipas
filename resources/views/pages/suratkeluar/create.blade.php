@@ -33,15 +33,31 @@
         <div class="card-body">
             <form action="{{ route('surat-keluar.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <div class="form-group">
+
+                <strong class="text-center d-block">Input Data Penerima</strong>
+                <hr>
+                <div class="from-group">
                     <div class="row">
                         <div class="col-md-6">
-                            <label for="kodesuratKeluar" class="form-label">Kode Surat Keluar</label>
-                            <input type="text" class="form-control" id="kodesuratKeluar" name="kodesuratKeluar" placeholder="Masukkan Kode Surat Keluar" value="{{ old('kodesuratKeluar') }}" required>
+                            <label for="namaPenerima" class="form-label">Nama Penerima Surat</label>
+                            <input type="text" class="form-control" name="namaPenerima" id="namaPenerima" placeholder="" value="{{ old('namaPenerima') }}">
                         </div>
                         <div class="col-md-6">
-                            <label for="nosuratKeluar" class="form-label">No Surat Keluar</label>
-                            <input type="text" class="form-control" id="nosuratKeluar" name="nosuratKeluar" placeholder="Masukkan No Surat Keluar" value="{{ old('nosuratKeluar') }}" required>
+                            <label for="tglSuratDiterima" class="form-label">Tanggal Surat Diterima</label>
+                            <input type="date" class="form-control" name="tglSuratDiterima" id="tglSuratDiterima" value="{{ old('tglSuratDiterima') }}">
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <hr>
+                <strong class="text-center d-block">Input Data Surat</strong>
+                <hr>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="kodesuratKeluar" class="form-label">Kode Surat Keluar</label>
+                            <input type="text" class="form-control" id="kodesuratKeluar" name="kodesuratKeluar" placeholder="Masukkan Kode Surat Keluar" value="{{ $kodeSurat }}" required readonly>
                         </div>
                     </div>
                 </div>
@@ -63,12 +79,12 @@
                     <div class="row">       
                         <div class="col-md-6">
                             <label for="tujuanSurat" class="form-label">Tujuan Surat</label>
-                            <input type="text" class="form-control" name="tujuanSurat" id="tujuanSurat" placeholder="Masukkan Tujuan Surat" value="{{ old('tujuanSurat') }}" required>
+                            <input type="text" class="form-control" name="tujuanSurat" id="tujuanSurat" placeholder="" value="{{ old('tujuanSurat') }}" required>
                         </div>
 
                         <div class="col-md-6">
                             <label for="perihal" class="form-label">Perihal</label>
-                            <input type="text" class="form-control" name="perihal" id="perihal" value="{{ old('perihal') }}" placeholder="Masukkan Perihal" required>
+                            <input type="text" class="form-control" name="perihal" id="perihal" value="{{ old('perihal') }}" placeholder="" required>
                         </div>
                     </div>
                 </div>
@@ -77,7 +93,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <label for="pembuat" class="form-label">Pembuat Surat</label>
-                            <input type="text" class="form-control" name="pembuat" id="pembuat" placeholder="Masukkan Pembuat Surat" value="{{ old('pembuat') }}" required>
+                            <input type="text" class="form-control" name="pembuat" id="pembuat" placeholder="" value="{{ old('pembuat') }}" required>
                         </div>
                     </div>
                 </div>

@@ -54,7 +54,14 @@ class SuratMasukController extends Controller
                         ' . Carbon::parse($item->tglsuratMasuk)->format('d M Y') . '
                     ';
                 })
-                ->rawColumns(['action', 'tglSurat', 'tglsuratMasuk'])
+                ->addColumn('status', function($item){
+                    if($item->disposisi_id){
+                        return 'Sudah Di disposisi';
+                    }else{
+                        return 'Belum Di disposisi';
+                    }
+                })
+                ->rawColumns(['action', 'tglSurat', 'tglsuratMasuk', 'status'])
                 ->addIndexColumn()
                 ->make();
         }
@@ -69,7 +76,7 @@ class SuratMasukController extends Controller
      */
     public function create()
     {
-        return view('pages.suratmasuk.create');
+      return view('pages.suratmasuk.create');
     }
 
     /**

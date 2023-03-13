@@ -33,6 +33,25 @@
             <form action="{{ route('surat-keluar.update', $data->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
+                <strong class="text-center d-block">Data Penerima</strong>
+                <hr>
+                <div class="from-group">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="namaPenerima" class="form-label">Nama Penerima Surat</label>
+                            <input type="text" class="form-control" name="namaPenerima" id="namaPenerima" placeholder="" value="{{ old('namaPenerima', $data->namaPenerima) }}" disabled>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="tglSuratDiterima" class="form-label">Tanggal Surat Diterima</label>
+                            <input type="date" class="form-control" name="tglSuratDiterima" id="tglSuratDiterima" value="{{ old('tglSuratDiterima', $data->tglSuratDiterima) }}" disabled>
+                        </div>
+                    </div>
+                </div>
+
+                <br><hr>
+                <strong class="text-center d-block">Data Surat</strong>
+                <hr>
+
                 <div class="form-group">
                     <div class="row">
                         <div class="col-md-6">
