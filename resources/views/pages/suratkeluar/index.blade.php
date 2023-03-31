@@ -41,12 +41,13 @@
                         <tr>
                             <th width="70px">No</th>
                             <th>Kode Surat Keluar</th>
-                            <th>No Surat Keluar</th>
                             <th>Tanggal Pembuatan Surat</th>
                             <th>Tanggal Pengiriman Surat</th>
+                            <th>Tanggal Surat Di terima</th>
                             <th>Tujuan Surat</th>
                             <th>Perihal</th>
                             <th>Pembuat Surat</th>
+                            <th>Nama Penerima</th>
                             <th width="150px">Action</th>
                         </tr>
                     </thead>
@@ -106,16 +107,16 @@
                 name: 'kodesuratKeluar'
             },
             {
-                data: 'nosuratKeluar',
-                name: 'nosuratKeluar',
-            },
-            {
                 data: 'tglpembuatanSurat',
                 name: 'tglpembuatanSurat',
             },
             {
                 data: 'tglpengirimanSurat',
                 name: 'tglpengirimanSurat',
+            },
+            {
+                data: 'tglSuratDiterima',
+                name: 'tglSuratDiterima',
             },
             {
                 data: 'tujuanSurat',
@@ -130,6 +131,11 @@
             {
                 data: 'pembuat',
                 name: 'pembuat',
+                orderable: false,
+            },
+            {
+                data: 'namaPenerima',
+                name: 'namaPenerima',
                 orderable: false,
             },
             {
